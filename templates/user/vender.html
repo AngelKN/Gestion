@@ -1,0 +1,74 @@
+{% include 'user/cabecera.html'%}
+<main class="table" id="customers_table">
+
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th> Producto <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Cantidad <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Costo <span class="icon-arrow">&UpArrow;</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla">
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<main class="formulario" id="customers_table">
+
+    <div>
+        <h4>Nuevo Producto</h4>
+        <div class="container">
+			<div class="search-input-box">
+				<input id="producto" class="controls" type="text" placeholder="¿Qué quieres buscar?" />
+				
+				<a href="#" target="_blank">
+					<i class="fa-solid fa-magnifying-glass icon"> </i>
+				</a>
+                <ul class="container-suggestions" id="miLista">
+                    {%for producto in productos%}
+                    <li data-valor="{{producto}}">{{producto[1]}}</li>
+                    {%endfor%}
+                </ul>
+                <input class="controls" id="id" hidden class="id" type="text"/>
+				<input class="controls" id="precio" class="precio" type="text" placeholder="Pecio"/>
+                <input class="controls" required id="cantidad" type="number" name="cantidad" id="cantidad" placeholder="Ingrese la cantidad de ingresados">
+			</div>
+            <input onclick="agregarElementos()" class="botons" type="submit" value="Agregar">
+		</div>
+    </div>
+    <div class="container">
+        <h4>Factura</h4>
+        <div class="precio_fac">
+            <h4  for="">Total</h4>
+            <h3>$</h3>
+            <h3 id="total" for="">0.00</h3>
+        </div>
+        <button onclick="abrirModal()" class="botons">Facturar</button>
+    </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="div_agregar div_modal">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <div class="div_agregar">
+                <h3>Total:</h2>
+                <h2 id="total_modal"></h2>
+            </div>
+            <input class="controls" id="nombre" name="nombre" type="text" placeholder="Ingrese Nombre del Cliente">
+            <input class="controls" id="email" name="email" type="text" placeholder="Ingrese Correo Electronico">
+            <input class="controls" id="telefono" name="telefono" type="text" placeholder="Ingrese Telefono">
+            <h1 id="sencillo"></h1>
+            <button onclick="facturar()" class="botons">Completar</button>
+        </div>
+    </div>
+    
+  </div>
+    
+</main>
+{% include 'user/pie.html'%}

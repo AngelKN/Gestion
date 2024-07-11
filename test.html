@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        #encabezado {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #encabezado h1 {
+            font-size: 24px;
+        }
+
+        #informacion {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #informacion p {
+            margin: 0;
+        }
+
+        #tabla {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #tabla th,
+        #tabla td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #tabla th {
+            text-align: left;
+        }
+
+        #tabla tfoot {
+            font-weight: bold;
+        }
+
+        #total {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="encabezado">
+        <h1>Factura</h1>
+    </div>
+
+    <div id="informacion">
+        <p>
+            <b>Emisor:</b><br>
+            Nombre del emisor<br>
+            Dirección del emisor<br>
+            NIF/CIF: 123456789
+        </p>
+
+        <p>
+            <b>Receptor:</b><br>
+            Nombre del receptor<br>
+            Dirección del receptor<br>
+            NIF/CIF: 987654321
+        </p>
+    </div>
+
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Producto 1</td>
+                <td>1</td>
+                <td>$10.00</td>
+                <td>$10.00</td>
+            </tr>
+            <tr>
+                <td>Producto 2</td>
+                <td>2</td>
+                <td>$15.00</td>
+                <td>$30.00</td>
+            </tr>
+            <tr>
+                <td>Producto 3</td>
+                <td>3</td>
+                <td>$5.00</td>
+                <td>$15.00</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Subtotal</td>
+                <td id="subtotal">$55.00</td>
+            </tr>
+            <tr>
+                <td colspan="3">IVA (10%)</td>
+                <td id="iva">$5.50</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total</td>
+                <td id="total">$60.50</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>

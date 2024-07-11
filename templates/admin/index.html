@@ -1,0 +1,48 @@
+{% include 'admin/cabecera.html'%}
+<div class="">
+    <div class="">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Valor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for factura in facturas %}
+                <tr>
+                    <td id="">{{factura[1]}}</td>  
+                    <td>{{factura[2]}}</td>
+                    <th>
+                        <form action="/admin/factura" method="post">
+                            <input value="{{factura[0]}}" type="hidden" name="id" id="id">
+                                <button class="prod_accion" type="submit" for="{{factura[0]}}"><img src="" alt="">ver</button>
+                        </form>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="">
+        <div class="">
+            <div class="">
+                <h3 class="">Ganancia Del Dia</h3>
+                <table>
+                    <table>
+                        <tr><td>$</td><td>{{totalD}}</td></tr>
+                    </table>
+                </table>
+                <h3 class="">Ganancia Del Mes</h3>
+                <table>
+                    <table>
+                        <tr><td>$</td><td>{{totalM}}</td></tr>
+                    </table>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'admin/pie.html'%}
