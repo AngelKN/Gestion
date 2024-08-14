@@ -1,0 +1,52 @@
+{% include 'cabecera.html'%}
+
+    <div class="container">
+        <div class="card__container">
+            <article class="card__article">
+                <img src="/img/insect-1.png" alt="image" class="card__img">
+                    
+                <div class="card__data">    
+                    <h3 class="card__title">Ganancias <br> Día</h3>
+                    <span class="card__price">${{totalD}}</span>
+                </div>
+
+                <img src="/img/bg-card.png" alt="image" class="card__bg">
+                <a href="/dia" class="card__button">
+                    View More <i class="ri-arrow-right-line"></i>
+                </a>
+            </article>
+
+            <article class="card__article">
+                <img src="/img/insect-2.png" alt="image" class="card__img">
+
+                <div class="card__data">
+                    <h3 class="card__title">Ganancias <br> Mes</h3>
+                    <span class="card__price">${{totalM}}</span>
+                </div>
+
+                <img src="/img/bg-card.png" alt="image" class="card__bg">
+
+                <a href="/mes" class="card__button">
+                    View More <i class="ri-arrow-right-line"></i>
+                </a>
+            </article>
+
+            <article class="card__article">
+                <img src="/img/insect-3.png" alt="image" class="card__img">
+
+                <div class="card__data">
+                    <h3 class="card__title">Ganancias <br> Años</h3>
+                    <span class="card__price">$0</span>
+                </div>
+
+                <img src="/img/bg-card.png" alt="image" class="card__bg">
+
+                <a href="#" class="card__button">
+                    View More <i class="ri-arrow-right-line"></i>
+                </a>
+            </article>
+        </div>
+    </div>
+
+
+{% include 'pie.html'%}

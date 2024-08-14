@@ -1,0 +1,77 @@
+{% include 'cabecera.html'%}
+    <div class="body">
+
+        <main class="table" id="customers_table">
+            <section class="table__header">
+                <div>
+                    <div class="formulario">
+                        
+                        <ul id="box-search">
+                            {% for producto in productos %}
+                            <li id="{{producto}}" onclick="guardarProducto(this.id)">{{producto[1]}}</li>
+                            {% endfor %}
+                        </ul>
+
+                        <div class="inputs-en-linea">
+                            <div class="input-group" id="ctn-bars-search">
+                                <input required type="search"  id="inputSearch" placeholder="Search Data...">
+                                <img src="/img/search.png" alt="">  
+                            </div>
+                          <input required type="number" id="input-precio" class="input-precio" placeholder="Precio">
+                          <input required type="number" id="input-cantidad" class="input-cantidad" placeholder="Cantidad">
+                        </div>
+                        
+                        <button id="miBoton">Agregar</button>
+                    </div>
+                </div>
+            </section>
+            <div class="div1">
+                <section class="table__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> No <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Producto <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Cantidad <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Precio <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>  </th>
+                            </tr>
+                        </thead>
+                        <tbody  id="myTableBody">
+                            
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+            <div class="div2">
+                <div class="contact-form">
+                    <h1>Total Bs.</h1>
+                    <h1 id="total"></h1>
+                </div>    
+                <div class="contact-form">
+                    <h3>Nuevo Producto</h3>
+                    <form>
+                        <p>
+                            <label>Cliente</label>
+                            <input required type="text" name="cliente" id="cliente">
+                        </p>
+                        <p>
+                            <label>Telefono</label>
+                            <input required type="text" name="telefono" id="telefono">
+                        </p>
+                        <p>
+                            <label>Correo</label>
+                            <input required type="text" name="email" id="email">
+                        </p>
+                        <p class="block">
+                            <button onclick="facturar()" for="btn-modal">
+                                Agregar
+                            </button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>     
+{% include 'pie.html'%}

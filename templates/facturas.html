@@ -1,0 +1,43 @@
+{% include 'cabecera.html'%}
+<div class="body">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="../img/search.png" alt="">
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Cliente <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Telefono <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Fecha <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Total <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for factura in facturas %}
+                    <tr>
+                        <td> {{factura[1]}} </td>
+                        <td> {{factura[3]}} </td>
+                        <td> {{factura[4]}} </td>
+                        <td> {{factura[5]}} </td>
+                        <td>
+                            <form action="/factura" method="post">
+                                <input hidden type="hidden" id="id" name="id" value="{{factura[0]}}">
+                                <button class="boton" type="submit">
+                                    <i class="bx bxl-facebook-circle" style="color: #4267B2;"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>  
+    
+    {% include 'pie.html'%}

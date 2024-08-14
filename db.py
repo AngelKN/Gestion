@@ -1,8 +1,8 @@
 import pymysql
 
 def obtener_conexion():
-    return pymysql.connect(host='bydmot60f16fgen6jzg6-mysql.services.clever-cloud.com',
-                          user='uddstlcsgfq4dbmx',
-                          password='EsPl2bBpJtpVQBeFjkZo',
-                          db='bydmot60f16fgen6jzg6',
+    return pymysql.connect(host='betngwc5ohto5j57at2o-mysql.services.clever-cloud.com',
+                          user='ukjfe3vekczw06ds',
+                          password='K5UxfBSrIWJptj1MVJtE',
+                          db='betngwc5ohto5j57at2o',
                           port=3306)

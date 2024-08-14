@@ -1,0 +1,121 @@
+{% include 'cabecera.html'%}
+<div class="body">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="../img/search.png" alt="">
+            </div>
+            <!--Boton-->
+    <div class="boton-modal">
+        <label for="btn-modal">
+            New
+        </label>
+    </div>
+<!--Fin de Boton-->
+<!--Ventana Modal-->
+    <input type="checkbox" id="btn-modal">
+    <div class="container-modal">
+        <div class="content-modal">
+            <div class="contact-form">
+                <h3>Nuevo Producto</h3>                    
+                <form action="/guardar" method="post">
+                    <input hidden type="text" name="val" value="{{val}}">
+                    <input hidden type="text" name="id" value="{{pro[0]}}">
+                    <p>
+                        <label>Producto</label>
+                        <input required type="text" name="producto" value="{{pro[1]}}">
+                    </p>
+                    <p>
+                        <label>Cantidad</label>
+                        <input required type="number" name="cantidad" value="{{pro[2]}}">
+                    </p>
+                    <p>
+                        <label>Valor Costo</label>
+                        <input required type="number" name="vcosto" value="{{pro[3]}}">
+                    </p>
+                    <p>
+                        <label>Valor Venta</label>
+                        <input required type="number" name="vventa" value="{{pro[4]}}">
+                    </p>
+                    <p class="block">
+                        <button for="btn-modal">
+                            Agregar
+                        </button>
+                    </p>
+                    <label for="btn-modal" class="cerrar-modal">cancelar</label>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--Fin de Ventana Modal-->
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Producto <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Cantidad <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Precio Costo <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Precio Venta <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td> {{producto[1]}} </td>
+                        <td> {{producto[2]}} </td>
+                        <td> {{producto[3]}} </td>
+                        <td> {{producto[4]}} </td>
+                        <td>
+                            <div class="select-menu" id="select-menu{{producto[0]}}">
+                                <div class="select-btn">
+                                    <span class="sBtn-text">Select your option</span>
+                                    <i class="bx bx-chevron-down"></i>
+                                </div>
+                        
+                                <ul class="options">
+                                    <form action="/menos" method="post">
+                                        <input hidden type="hidden" id="id" name="id" value="{{producto[0]}}">
+                                        <button class="boton" type="submit">
+                                            <li class="option">
+                                                <i class="bx bxl-github" style="color: #171515;"></i>
+                                            </li>
+                                        </button> 
+                                    </form>   
+                                    <form action="/mas" method="post">
+                                        <input hidden type="hidden" id="id" name="id" value="{{producto[0]}}">
+                                        <button class="boton" type="submit">     
+                                            <li class="option">
+                                                <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
+                                            </li>
+                                        </button>
+                                    </form>
+                                    <form action="/producto" method="post">
+                                        <input hidden type="hidden" id="id" name="id" value="{{producto[0]}}">
+                                        <button class="boton" type="submit">
+                                            <li class="option">
+                                                <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
+                                            </li>
+                                        </button>
+                                    </form>
+                                    <form action="/delete" method="post">
+                                        <input hidden type="hidden" id="id" name="id" value="{{producto[0]}}">
+                                        <button class="boton" type="submit">
+                                            <li class="option">
+                                                <i class="bx bxl-facebook-circle" style="color: #4267B2;"></i>
+                                            </li>
+                                        </button>
+                                    </form>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>  
+    
+    {% include 'pie.html'%}
