@@ -53,14 +53,6 @@
 }
 /*:::Fin Ventana Modal:::*/
 
-
-
-
-body {
-    line-height: 1.6;
-    font-family: 'Quicksand', sans-serif;
-}
-
 .container {
     max-width: 1170px;
     margin-left: auto;
@@ -74,7 +66,6 @@ ul {
 }
 
 .contact-form {
-    
     background-color: #D5D1DE;
     padding: 10px;
 }
@@ -99,7 +90,8 @@ ul {
 
 .contact-form form button,
 .contact-form form input,
-.contact-form form textarea {
+.contact-form form textarea, 
+.contact-form form .cerrar-modal {
     width: 100%;
     padding: .7em;
     border: none;
@@ -113,7 +105,8 @@ ul {
     color: white;
 }
 
-.contact-form form button {
+.contact-form form button, 
+.contact-form form .cerrar-modal {
     background: #fff;
     border: 0;
     text-transform: uppercase;
@@ -121,11 +114,19 @@ ul {
 }
 
 .contact-form form button:hover,
-.contact-form form button:focus {
+.contact-form form button:focus{
     background: #0f0;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
+}
+
+.contact-form form .cerrar-modal{
+    background: rgb(255, 0, 0);    
+    color: #fff;
+    transition: background-color 1s ease-out;
+    outline: 0;
+    text-align: center;
 }
 
 /* CONTACT INFO */

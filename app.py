@@ -171,6 +171,13 @@ def getFacturasM():
 
     return render_template('/facturas.html', facturas = facturas)
 
+@app.route("/año")
+def getFacturasA():
+
+    facturas = CRUD.getFacturasA()
+
+    return render_template('/facturas.html', facturas = facturas)
+
 
 @app.route("/factura", methods = ['POST'])
 def verFactura():

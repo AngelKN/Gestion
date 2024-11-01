@@ -22,7 +22,7 @@
   }
 }
 
-.container {
+.containerCard {
     display: grid;
     margin-inline: 1.5rem;
     padding-block: 5rem;
@@ -148,7 +148,7 @@ img {
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 300px) {
-  .container {
+  .containerCard {
     margin-inline: 1rem;
   }
 
@@ -159,7 +159,7 @@ img {
 
 /* For large devices */
 @media screen and (min-width: 1120px) {
-  .container {
+  .containerCard {
     height: 100vh;
     display: grid;
     align-items: center;

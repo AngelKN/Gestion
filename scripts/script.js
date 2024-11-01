@@ -120,6 +120,8 @@ function listar(){
             listFactura.push(listaPro);
         }
     }
+
+    document.getElementById('input-cantidad').value = 0;
 }
 
 function facturar(){
@@ -167,4 +169,5 @@ function facturar(){
 	xhr.send(JSON.stringify(listFactura));
 
 	listFactura = [];
+
 }

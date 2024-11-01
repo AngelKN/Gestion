@@ -152,6 +152,19 @@ def getFacturasM():
     con.close()
     return facturas
 
+def getFacturasA():
+
+    fechaHora = datetime.now().strftime("%Y")
+    con = obtener_conexion()
+    cursor = con.cursor()
+    sql = "SELECT * FROM facturas WHERE fecha LIKE '%{}%'".format(fechaHora)
+    cursor.execute(sql)
+    facturas = cursor.fetchall()
+
+    con.commit()
+    con.close()
+    return facturas
+
 def deleteProducto(id):
     con = obtener_conexion()
     cursor = con.cursor()
