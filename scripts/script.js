@@ -1,6 +1,17 @@
 let listFactura = [];
-let listaFac = [];
+class listaFac{
 
+    constructor(id, nombre, cantidad, precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+}
+
+let productoNuevo = new listaFac("", "", 0, 0);
+let productoNuevoFactura = new listaFac("", "", 0, 0);
+    
 //Buscador de contenido
 
 //Declarando variables
@@ -59,7 +70,10 @@ function guardarProducto(productoCompleto) {
         return elemento.trim();
     });
 
-    listaFac.push(listaConvertida);
+    productoNuevo.id = listaConvertida[0];
+    productoNuevo.nombre = listaConvertida[1]; 
+    productoNuevo.cantidad = 0;
+    productoNuevo.precio = listaConvertida[4];
 
     const precio = listaConvertida[4],
     producto = listaConvertida[1];
@@ -80,36 +94,66 @@ function listar(){
     let subtotal = 0;
     let totalA = 0;
     let listaPro = [];
+    var existe = true;
 
-    const tabla = document.getElementById('myTableBody'),
-        cantidad = document.getElementById('input-cantidad').value, 
-        precio = document.getElementById('input-precio'),
+    const tabla = document.getElementById('myTableBody'), 
+        precio = document.getElementById('input-precio').value,
         totalI = document.getElementById('total');
 
-    if (cantidad != 0) {
-        for (const datos of listaFac) {
-            listaPro = [];
+    let cantidad = parseInt(document.getElementById('input-cantidad').value, 10);
+
+    productoNuevo.cantidad = cantidad;
+    productoNuevo.precio = precio;
+
+    if (productoNuevo.cantidad != 0) {
+
+        for (var i = 0; i < tabla.rows.length; i++) {
+            // Obtenemos la celda en la primera columna de la fila actual
+            var celda = tabla.rows[i].cells[1];
+        
+            // Comparamos el texto de la celda con el texto dado
+            if (celda.innerText === productoNuevo.nombre) {
+                existe = false;
+                let celdaCantidad = parseInt(tabla.rows[i].cells[2].innerText, 10);
+
+                totalA = parseInt(totalI.textContent) || 0;
+                
+                totalA += (productoNuevo.cantidad*productoNuevo.precio);
+                totalI.textContent = totalA;
+
+                productoNuevo.cantidad += celdaCantidad;
+                productoNuevo.precio *= productoNuevo.cantidad;
+
+                tabla.rows[i].cells[2].innerText = productoNuevo.cantidad;
+                tabla.rows[i].cells[3].innerText = productoNuevo.precio;
+                break;
+            } else {
+                existe = true;
+            }
+        }
+
+        if(existe){
             const fila = document.createElement("tr");
 
             const celda0 = document.createElement("td");
-            celda0.textContent = contador + 1;
+            celda0.textContent = productoNuevo.id;
             fila.appendChild(celda0);
 
             const celda1 = document.createElement("td");
-            celda1.textContent = datos[1];
+            celda1.textContent = productoNuevo.nombre;
             fila.appendChild(celda1);
-            listaPro.push(datos[0])
+            productoNuevoFactura.nombre = productoNuevo.nombre;
 
             const celda2 = document.createElement("td");
-            celda2.textContent = cantidad;
+            celda2.textContent = productoNuevo.cantidad;
             fila.appendChild(celda2);
-            listaPro.push(cantidad);
+            productoNuevoFactura.cantidad = productoNuevo.cantidad;
 
             const celda3 = document.createElement("td");
-            subtotal = datos[4] * cantidad;
+            subtotal = productoNuevo.precio * productoNuevo.cantidad;
             celda3.textContent = subtotal;
             fila.appendChild(celda3);
-            listaPro.push(subtotal)
+            listaPro.push(subtotal);
 
             totalA = parseInt(totalI.textContent) || 0;
             totalA = totalA + subtotal;
