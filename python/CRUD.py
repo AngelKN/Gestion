@@ -1,5 +1,9 @@
-from db import obtener_conexion
+from python.db import obtener_conexion
 from datetime import datetime
+from python.models.Facturas import Facturas  
+from python.models.Products import Products 
+from python.models.ProFac import ProFac      
+
 
 def postProducto(producto, cantidad, vcosto,vventas):
 
@@ -35,20 +39,31 @@ def getProducto():
     cursor = con.cursor()
     sql = "SELECT * FROM productos"
     cursor.execute(sql)
-    produc = cursor.fetchall()
+    producFetchall = cursor.fetchall()
+    productos = []
+    
+    for pro in producFetchall:
+        producto_obj = Products(pro[0], pro[1], pro[2], pro[3], pro[4], pro[5])
+        productos.append(producto_obj)
+
     con.commit()
     con.close()
-    return produc
+    return productos
 
 def getProductoId(id):
     con = obtener_conexion()
     cursor = con.cursor()
     sql = "SELECT * FROM productos WHERE id = {}".format(id)
     cursor.execute(sql)
-    produc = cursor.fetchall()
+    producFetchall = cursor.fetchall()
+    productos = []
+    
+    for pro in producFetchall:
+        producto_obj = Products(pro[0], pro[1], pro[2], pro[3], pro[4], pro[5])
+        productos.append(producto_obj)
     con.commit()
     con.close()
-    return produc
+    return productos
 
 def getFactura(fechaFactura):
     con = obtener_conexion()

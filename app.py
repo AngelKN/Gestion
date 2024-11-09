@@ -3,7 +3,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email import encoders
-import base64, os.path, CRUD, smtplib
+import base64, os.path, python.CRUD as CRUD, smtplib
+import python.models.Facturas, python.models.Products, python.models.ProFac 
 
 app = Flask(__name__)
 app.secret_key = "develoteca"
@@ -154,6 +155,8 @@ def nuevoProd():
 def getFacturas():
 
     facturas = CRUD.getFacturas()
+    prods = CRUD.getProFacId(int(facturas[2][0]))
+    print(prods)
 
     return render_template('/facturas.html', facturas = facturas)
 
@@ -211,7 +214,6 @@ def postProducto():
     vcompra = request.form['vcosto']
     vventa = request.form['vventa']
     val = int(request.form['val'])
-    print(val)
 
     if val == 1:
         CRUD.postProducto(producto, cantidad, vcompra, vventa)
